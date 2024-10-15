@@ -1,13 +1,19 @@
-Cyborg - Capture The Flag - TryHackMe
-
+# Cyborg - Capture The Flag - TryHackMe
 A box involving encrypted archives, source code analysis and more.
-Given Target IP Address: 10.10.54.113
+# Given Target IP Address: 10.10.54.113
 
-    Scan the machine, how many ports are open?
+1.Scan the machine, how many ports are open?
 
-    Scan open ports from given target ip add.
+- Scan open ports from given target ip add.
 
-     nmap –top-ports 100 10.10.54.113
+         nmap –top-ports 100 10.10.54.113
 
-    Answer: 3
+**Answer: 3**
+
+2. What service is running on port 22?
+
+   **Answer: ssh**
+3. What service is running on port 80?
+
+    **Answer: http**
 
