@@ -98,3 +98,6 @@ dirsearch -u https://hackerone.com \
 - Always follow responsible disclosure guidelines
 - Document your findings thoroughly
 - Stay updated with latest security trends and vulnerabilities
+
+## Methodology 
+
