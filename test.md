@@ -1,4 +1,4 @@
-File Upload Vulnerabilities
+File Upload Vulnerabilitiess
 
 File upload vulnerabilities occur when a website doesn't properly handle the files that users upload. If the site doesn't check what kind of file is being uploaded, how big it is, or what it contains, it opens the door to all sorts of attacks. For example:
 
